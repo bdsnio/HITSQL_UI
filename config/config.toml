@@ -1,0 +1,36 @@
+[website]
+name = "HIT_Circle"
+
+[server]
+port = 9000
+maxQueue = 100
+maxThread = 8
+root = "www"
+template = "www/templates"
+
+[[defMap]]
+rule = [
+    "/404.html",
+    "/",
+    "/index.html",
+    "/register.html",
+    "/login.html",
+    "/home.html",
+    "/publish.html",
+    "/myspace.html",
+    "/friendlist.html",
+    "/administrator.html",
+]
+handler = "staticHandler"
+
+[[ruleMap]]
+rule = ["/[\\w]+.css", "/[\\w]+.js"]
+handler = "staticHandler"
+
+[[ruleMap]]
+rule = ["/user/[0-9]+"]
+handler = "templateHandler"
+
+[[ruleMap]]
+rule = ["/text/[0-9]+"]
+handler = "xmlHandler"
